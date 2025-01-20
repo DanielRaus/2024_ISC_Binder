@@ -1,73 +1,29 @@
 import 'package:flutter/material.dart';
-import 'screens/home_screen.dart';
+import 'screens/landing_page.dart';
 
 void main() {
-  runApp(const BookRecommendationApp());
+  runApp(const MyApp());
 }
 
-class BookRecommendationApp extends StatelessWidget {
-  const BookRecommendationApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Book Recommendation App',
+      title: 'BookSwipe',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Colors.grey[100],
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF8B4513), // Saddle Brown
+          background: const Color(0xFFF5F5DC), // Beige
+        ),
+        cardColor: const Color(0xFFFAF0E6), // Linen
         appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.white,
-          foregroundColor: Colors.black,
-          elevation: 0,
+          backgroundColor: Color(0xFF8B4513), // Saddle Brown
+          foregroundColor: Colors.white,
         ),
       ),
-      home: const HomeScreen(),
-    );
-  }
-}
-
-// lib/screens/home_screen.dart
-import 'package:flutter/material.dart';
-import 'book_swipe_screen.dart';
-import 'user_profile_screen.dart';
-
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 0;
-
-  final List<Widget> _screens = [
-    const BookSwipeScreen(),
-    const UserProfileScreen(),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: _screens[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.book),
-            label: 'Discover',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
-      ),
+      home: const LandingPage(),
     );
   }
 }
