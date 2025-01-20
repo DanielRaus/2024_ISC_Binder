@@ -1,0 +1,30 @@
+name: book_recommendation_app
+description: A book recommendation app with swipe interface
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  # For smooth card swiping animations
+  flutter_card_swiper: ^6.0.0
+  # For managing app state
+  provider: ^6.0.5
+  # For storing static data
+  shared_preferences: ^2.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
+  # Add sample book cover images
+  assets:
+    - assets/images/
