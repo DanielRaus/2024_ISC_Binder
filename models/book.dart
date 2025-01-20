@@ -1,17 +1,17 @@
 class Book {
-  final String id;
   final String title;
   final String author;
   final String description;
-  final String coverImagePath;
-  final double compatibilityScore;
+  final String imageUrl;
+  final String language;
+  final String genre;
 
   Book({
-    required this.id,
     required this.title,
     required this.author,
     required this.description,
-    required this.coverImagePath,
-    required this.compatibilityScore,
+    required this.imageUrl,
+    required this.language,
+    required this.genre,
   });
 }
