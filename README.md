@@ -66,6 +66,3 @@ This is a demo application with sample book data. For production use, you would 
 - Include real book cover images
 - Implement proper error handling
 - Add more comprehensive user features
-
-## License
-[MIT License](LICENSE)
