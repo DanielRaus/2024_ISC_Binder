@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+  final Map<String, dynamic> userData;
+
+  const ProfilePage({
+    super.key,
+    required this.userData,
+  });
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -64,13 +69,21 @@ class _ProfilePageState extends State<ProfilePage> {
             child: Icon(Icons.person, size: 50),
           ),
           const SizedBox(height: 16),
-          const Text(
-            'Tester',
-            style: TextStyle(
+          Text(
+            widget.userData['username'] ?? 'Unknown User', // Display actual username
+            style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
             ),
           ),
+          if (widget.userData['fname'] != null || widget.userData['lname'] != null)
+            Text(
+              '${widget.userData['fname'] ?? ''} ${widget.userData['lname'] ?? ''}'.trim(),
+              style: const TextStyle(
+                fontSize: 16,
+                color: Colors.grey,
+              ),
+            ),
           const SizedBox(height: 32),
 
           // Preferences Sections
