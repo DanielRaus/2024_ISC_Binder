@@ -1,10 +1,14 @@
-// lib/screens/main_screen.dart
 import 'package:flutter/material.dart';
 import 'book_swipe_page.dart';
 import 'profile_page.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+  final Map<String, dynamic> userData;
+
+  const MainScreen({
+    super.key,
+    required this.userData,
+  });
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -13,10 +17,16 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _pages = [
-    BookSwipePage(),
-    ProfilePage(),
-  ];
+  late final List<Widget> _pages;
+
+  @override
+  void initState() {
+    super.initState();
+    _pages = [
+      const BookSwipePage(),
+      ProfilePage(userData: widget.userData),
+    ];
+  }
 
   void _onItemTapped(int index) {
     setState(() {
