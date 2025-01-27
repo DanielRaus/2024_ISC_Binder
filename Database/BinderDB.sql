@@ -154,5 +154,42 @@ CREATE TABLE liked_titles (
   CONSTRAINT fk_liked_title FOREIGN KEY (title_id) REFERENCES titles (id) ON DELETE CASCADE
 );
 
--- Comments
-COMMENT ON COLUMN titles.ISBN IS 'Max 13 characters for ISBN.';
+-- Indexes for faster querying
+CREATE INDEX idx_titles_authors_title_id ON titles_authors (title_id);
+CREATE INDEX idx_titles_authors_author_id ON titles_authors (author_id);
+
+CREATE INDEX idx_titles_genres_title_id ON titles_genres (title_id);
+CREATE INDEX idx_titles_genres_genre_id ON titles_genres (genre_id);
+
+CREATE INDEX idx_titles_languages_title_id ON titles_languages (title_id);
+CREATE INDEX idx_titles_languages_language_id ON titles_languages (language_id);
+
+CREATE INDEX idx_language_preferences_user_id ON language_preferences (user_id);
+CREATE INDEX idx_language_preferences_language_id ON language_preferences (language_id);
+
+CREATE INDEX idx_genre_preferences_user_id ON genre_preferences (user_id);
+CREATE INDEX idx_genre_preferences_genre_id ON genre_preferences (genre_id);
+
+CREATE INDEX idx_author_preferences_user_id ON author_preferences (user_id);
+CREATE INDEX idx_author_preferences_author_id ON author_preferences (author_id);
+
+CREATE INDEX idx_length_preferences_user_id ON length_preferences (user_id);
+CREATE INDEX idx_length_preferences_length_id ON length_preferences (length_id);
+
+CREATE INDEX idx_titles_formats_title_id ON titles_formats (title_id);
+CREATE INDEX idx_titles_formats_format_id ON titles_formats (format_id);
+
+CREATE INDEX idx_liked_titles_user_id ON liked_titles (user_id);
+CREATE INDEX idx_liked_titles_title_id ON liked_titles (title_id);
+
+CREATE INDEX idx_users_username ON users (username);
+CREATE INDEX idx_users_location ON users (location);
+
+CREATE INDEX idx_titles_ISBN ON titles (ISBN);
+CREATE INDEX idx_titles_publisher ON titles (publisher);
+CREATE INDEX idx_titles_is_available ON titles (is_available);
+CREATE INDEX idx_titles_average_rating ON titles (average_rating);
+CREATE INDEX idx_titles_pubdate ON titles (pubdate);
+
+CREATE INDEX idx_genres_name ON genres (name);
+CREATE INDEX idx_languages_name ON languages (name);
