@@ -37,6 +37,7 @@ CREATE TABLE authors (
   au_lname VARCHAR NOT NULL
 );
 
+-- First primary table, containing essential information about the books
 CREATE TABLE titles (
   id SERIAL PRIMARY KEY,
   name VARCHAR(40) NOT NULL,
@@ -50,6 +51,7 @@ CREATE TABLE titles (
   publisher VARCHAR
 );
 
+-- Table linking books to their authors
 CREATE TABLE titles_authors (
   title_id INTEGER NOT NULL,
   author_id INTEGER NOT NULL,
@@ -58,11 +60,13 @@ CREATE TABLE titles_authors (
   CONSTRAINT fk_author FOREIGN KEY (author_id) REFERENCES authors (id) ON DELETE CASCADE
 );
 
+-- Table containing all possible genres
 CREATE TABLE genres (
   id SERIAL PRIMARY KEY,
   name Genre NOT NULL
 );
 
+-- Table linking books to one or more genres
 CREATE TABLE titles_genres (
   title_id INTEGER NOT NULL,
   genre_id INTEGER NOT NULL,
@@ -71,11 +75,13 @@ CREATE TABLE titles_genres (
   CONSTRAINT fk_genre FOREIGN KEY (genre_id) REFERENCES genres (id) ON DELETE CASCADE
 );
 
+-- Table containing all available languages
 CREATE TABLE languages (
   id SERIAL PRIMARY KEY,
   name Language NOT NULL
 );
 
+-- Table linking books to their languages
 CREATE TABLE titles_languages (
   title_id INTEGER NOT NULL,
   language_id INTEGER NOT NULL,
@@ -84,6 +90,7 @@ CREATE TABLE titles_languages (
   CONSTRAINT fk_language FOREIGN KEY (language_id) REFERENCES languages (id) ON DELETE CASCADE
 );
 
+-- Second primary table, containing all essential informations about the users
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   username VARCHAR UNIQUE NOT NULL,
@@ -96,6 +103,7 @@ CREATE TABLE users (
   profile_picture_url VARCHAR
 );
 
+-- Table linking individual users to their selected language preferences
 CREATE TABLE language_preferences (
   user_id INTEGER NOT NULL,
   language_id INTEGER NOT NULL,
@@ -104,6 +112,7 @@ CREATE TABLE language_preferences (
   CONSTRAINT fk_language_pref FOREIGN KEY (language_id) REFERENCES languages (id) ON DELETE CASCADE
 );
 
+-- Table linking users to their selected genre preferences
 CREATE TABLE genre_preferences (
   user_id INTEGER NOT NULL,
   genre_id INTEGER NOT NULL,
@@ -112,6 +121,7 @@ CREATE TABLE genre_preferences (
   CONSTRAINT fk_genre_pref FOREIGN KEY (genre_id) REFERENCES genres (id) ON DELETE CASCADE
 );
 
+-- Table linking users to their favorite authors
 CREATE TABLE author_preferences (
   user_id INTEGER NOT NULL,
   author_id INTEGER NOT NULL,
@@ -120,11 +130,13 @@ CREATE TABLE author_preferences (
   CONSTRAINT fk_author_pref FOREIGN KEY (author_id) REFERENCES authors (id) ON DELETE CASCADE
 );
 
+-- Table containing all possible book lengths
 CREATE TABLE lengths (
   id SERIAL PRIMARY KEY,
   length Length NOT NULL
 );
 
+-- Table linking users to their preffered lengths
 CREATE TABLE length_preferences (
   user_id INTEGER NOT NULL,
   length_id INTEGER NOT NULL,
@@ -133,11 +145,13 @@ CREATE TABLE length_preferences (
   CONSTRAINT fk_length FOREIGN KEY (length_id) REFERENCES lengths (id) ON DELETE CASCADE
 );
 
+-- Table containing all possible formats
 CREATE TABLE formats (
   id SERIAL PRIMARY KEY,
   type Format NOT NULL
 );
 
+-- Table linking books to their formats
 CREATE TABLE titles_formats (
   title_id INTEGER NOT NULL,
   format_id INTEGER NOT NULL,
@@ -146,6 +160,7 @@ CREATE TABLE titles_formats (
   CONSTRAINT fk_format FOREIGN KEY (format_id) REFERENCES formats (id) ON DELETE CASCADE
 );
 
+-- Table matching users to their liked books
 CREATE TABLE liked_titles (
   user_id INTEGER NOT NULL,
   title_id INTEGER NOT NULL,
