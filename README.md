@@ -168,3 +168,7 @@ This is a demo application with sample book data. For production use, you would 
 15. Environment Variables
 
     The server is designed to be configurable via environment variables, though some sensitive data (like the JWT secret) is hardcoded in this example.
+
+## Front-end structure
+![image](https://github.com/user-attachments/assets/6273748d-5c12-478b-86bd-162570888fee)
+
