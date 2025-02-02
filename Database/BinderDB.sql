@@ -41,14 +41,15 @@ CREATE TABLE authors (
 CREATE TABLE titles (
   id SERIAL PRIMARY KEY,
   name VARCHAR(40) NOT NULL,
-  pages INTEGER,
+  pages INTEGER NOT NULL,
   price DECIMAL(5, 2),
   pubdate DATE NOT NULL,
   is_available BOOLEAN NOT NULL,
   ISBN CHAR(13) UNIQUE NOT NULL,
-  cover_image_url VARCHAR,
+  cover_image_url VARCHAR NOT NULL,
   average_rating DECIMAL(3, 2),
-  publisher VARCHAR
+  publisher VARCHAR NOT NULL,
+  description VARCHAR NOT NULL
 );
 
 -- Table linking books to their authors
