@@ -24,6 +24,10 @@ npm install express pg cors
 
 # Start the server
 node server.js
+
+
+# Token
+npm install jsonwebtoken
 ```
 
 ### Flutter App Setup
