@@ -45,7 +45,7 @@ CREATE TABLE titles (
   price DECIMAL(5, 2),
   pubdate DATE NOT NULL,
   is_available BOOLEAN NOT NULL,
-  ISBN CHAR(13) UNIQUE NOT NULL,
+  ISBN CHAR(13) NOT NULL,
   cover_image_url VARCHAR NOT NULL,
   average_rating DECIMAL(3, 2),
   publisher VARCHAR NOT NULL,
@@ -209,3 +209,12 @@ CREATE INDEX idx_titles_pubdate ON titles (pubdate);
 
 CREATE INDEX idx_genres_name ON genres (name);
 CREATE INDEX idx_languages_name ON languages (name);
+
+
+
+
+
+
+
+
+
